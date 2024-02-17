@@ -17,7 +17,7 @@ Press enter afterwards.
 
 ### Building the Project
 
-GCC: gcc -o main main.c token.c
+GCC: gcc -o main  main.c int_stack.c token.c -I.
 CMAKE: 
 Check if build file. If not, mkdir build in RFORTH directory, cd build, cmake .., make.
 Run the program with ./main
