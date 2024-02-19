@@ -18,7 +18,7 @@ build/
 *.d
 
 #txt outputter:
-tl.sh
+RFORTH/tl.sh
 #ignoring git mirror?
 RForth-Safari.git
 
