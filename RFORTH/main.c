@@ -64,9 +64,18 @@ int main(){
             int_stack_dup(&theStack);
             int_stack_print(&theStack, stdout);
         }
+
         if(strncmp(s, "ADD",3) ==0){
             int_stack_add(&theStack);
             int_stack_print(&theStack, stdout);
+        }
+        int top_value;
+        if(strncmp(s, "POP",3) ==0){
+            if(int_stack_pop(&theStack, &top_value) == 1){
+                printf("%d\n",top_value);
+                int_stack_print(&theStack, stdout);
+
+            }
         }
     } while(strncmp(s, "QUIT", 4) != 0);   
     return 0;
