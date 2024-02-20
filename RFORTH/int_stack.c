@@ -80,18 +80,18 @@ int int_stack_add(int_stack_t *stk) {
     return int_stack_push(stk, top_value + next_to_top_value);
 }
 
-void int int_stack_over(int_stack_t *stk){
+int int_stack_over(int_stack_t *stk){
     //check stack size:
-    """: The operation first checks if there are 
-    at least two elements on the stack because it 
-    needs to access the second-to-top element. If 
-    there are fewer than two elements, the operation 
-    cannot proceed and should indicate an error or failure."""
+    // """: The operation first checks if there are 
+    // at least two elements on the stack because it 
+    // needs to access the second-to-top element. If 
+    // there are fewer than two elements, the operation 
+    // cannot proceed and should indicate an error or failure."""
     if (stk->size <2){
-        printf("OVER: Not enought elemts.\n")
+        printf("OVER: Not enought elemts.\n");
         return 0; //meaning error fail
     }
-    int int_entry_t *secondElem = SLIST_NEXT(SLIST_FIRST(&stk->head), entries);
+    int_entry_t *secondElem = SLIST_NEXT(SLIST_FIRST(&stk->head), entries);
     if(secondElem){
         return int_stack_push(stk, secondElem->value); //success if push is 1
 
@@ -105,7 +105,7 @@ void int int_stack_over(int_stack_t *stk){
     //hint: use SLIT_NEXT macro to access second-2top elem 
     //2 args: 1st elem of list, name of entries in 
     //int_entry_t struct
-    }
+}
 
 
 
