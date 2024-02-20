@@ -64,6 +64,10 @@ int main(){
             int_stack_dup(&theStack);
             int_stack_print(&theStack, stdout);
         }
+        if(strncmp(s, "ADD",3) ==0){
+            int_stack_add(&theStack);
+            int_stack_print(&theStack, stdout);
+        }
     } while(strncmp(s, "QUIT", 4) != 0);   
     return 0;
 }
