@@ -10,7 +10,6 @@ int main(){
     const int capacity = 10;//init cap of 10 
     int_stack_init(&theStack, capacity);//make stack with cap of 10 for now
 
-
     char s[1024];
     //do to keep repeating until exit
     do{
@@ -18,7 +17,6 @@ int main(){
         //printf(""); //in case wants to put 'enter here: ' 
 
         fgets(s,1024,stdin); //gets the input
-
        
         //for now: if PUSH's', push to stack
         if(strncmp(s,"PUSH",4)==0){
