@@ -49,6 +49,11 @@ int main(){
                 i++;
             } 
         }
+        //else if over:
+        if(strncmp(s, "OVER", 4) == 0){
+            int_stack_over(&theStack);
+            int_stack_print(&theStack, stdout);
+        }
     } while(strncmp(s, "QUIT", 4) != 0);   
 
     //testing it:      
