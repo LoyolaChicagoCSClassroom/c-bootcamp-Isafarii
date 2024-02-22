@@ -34,7 +34,12 @@ extern int int_stack_over(int_stack_t *stk);
 extern int int_stack_rot(int_stack_t *stk);
 //add drop
 int int_stack_drop(int_stack_t *stk);
+//2swap
+int int_stack_2swap(int_stack_t *stk);
 
-
-
+//mult and sub
+int int_stack_mult(int_stack_t *stk);
+int int_stack_sub(int_stack_t *stk);
+//div
+int int_stack_div(int_stack_t *stk);
 #endif // INT_STACK_H

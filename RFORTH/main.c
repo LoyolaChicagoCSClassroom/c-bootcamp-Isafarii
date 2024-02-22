@@ -58,13 +58,28 @@ int main(){
             int_stack_swap(&theStack);
             int_stack_print(&theStack, stdout);
         }
+        if(strncmp(s, "2SWAP",4) ==0){
+        int_stack_2swap(&theStack);
+        int_stack_print(&theStack, stdout);
+        }
         if(strncmp(s, "DUP",3) ==0){
             int_stack_dup(&theStack);
             int_stack_print(&theStack, stdout);
         }
-
         if(strncmp(s, "ADD",3) ==0){
             int_stack_add(&theStack);
+            int_stack_print(&theStack, stdout);
+        }
+        if(strncmp(s, "SUB",3) ==0){
+            int_stack_sub(&theStack);
+            int_stack_print(&theStack, stdout);
+        }
+        if(strncmp(s, "MULT",4) ==0){
+            int_stack_mult(&theStack);
+            int_stack_print(&theStack, stdout);
+        }
+        if(strncmp(s, "DIV",3) ==0){
+            int_stack_div(&theStack);
             int_stack_print(&theStack, stdout);
         }
         if(strncmp(s, "DROP",4) ==0){

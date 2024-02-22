@@ -68,6 +68,20 @@ int int_stack_swap(int_stack_t *stk) {
     int_stack_push(stk, top_value);
     return int_stack_push(stk, next_to_top_value); // success only if last operation succeeds
 }
+int int_stack_2swap(int_stack_t *stk) {
+    if (stk->size < 4)
+        return 0;
+    int top_value, second_value,third_value,forth_value; // ;)
+    int_stack_pop(stk, &top_value);
+    int_stack_pop(stk, &second_value);
+    int_stack_pop(stk, &third_value);
+    int_stack_pop(stk, &forth_value);
+    int_stack_push(stk, second_value);
+    int_stack_push(stk, top_value);
+    int_stack_push(stk, forth_value);
+    int_stack_push(stk, third_value);
+    return 1;
+}
 
 /* Example of how to create a binary operator that works o top two elements (if present) */
 
@@ -108,6 +122,35 @@ int int_stack_drop(int_stack_t *stk) {
     free(entry);
     stk->size--;
     return 1;
+}
+int int_stack_sub(int_stack_t *stk){
+    if(stk->size <2)
+        return 0;
+    int top_value, next_to_top_value;
+    int_stack_pop(stk, &top_value);
+    int_stack_pop(stk, &next_to_top_value);
+    return int_stack_push(stk,next_to_top_value-top_value);
+}
+int int_stack_mult(int_stack_t *stk){
+    if(stk->size<2)
+        return 0;
+    int top_value, next_to_top_value;
+    int_stack_pop(stk, &top_value);
+    int_stack_pop(stk,&next_to_top_value);
+    return int_stack_push(stk,top_value * next_to_top_value);
+}
+int int_stack_div(int_stack_t *stk){
+    if(stk->size <2)
+        return 0;
+    int top_value, next_to_top_value;
+    int_stack_pop(stk, &top_value);
+    int_stack_pop(stk, &next_to_top_value);
+    //case for divide by zero error
+    if (top_value==0){
+        printf("Error. Division by zero.\n");
+        return 0;
+    }
+    return int_stack_push(stk,next_to_top_value/top_value);
 }
 int int_stack_over(int_stack_t *stk){
     //check stack size:
