@@ -31,8 +31,9 @@ extern int int_stack_over(int_stack_t *stk);
 //add swap
 
 //add ROT
-int int_stack_rot(int_stack_t *stk);
-
+extern int int_stack_rot(int_stack_t *stk);
+//add drop
+int int_stack_drop(int_stack_t *stk);
 
 
 

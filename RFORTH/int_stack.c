@@ -98,6 +98,17 @@ int int_stack_rot(int_stack_t *stk){
     return int_stack_push(stk,third_value);
 
 }
+int int_stack_drop(int_stack_t *stk) {
+    if(stk->size < 1){
+        printf("DROP: Stack is empty.\n");
+        return 0; 
+    }
+    int_entry_t *entry = SLIST_FIRST(&stk->head);
+    SLIST_REMOVE_HEAD(&stk->head,entries);
+    free(entry);
+    stk->size--;
+    return 1;
+}
 int int_stack_over(int_stack_t *stk){
     //check stack size:
     // """: The operation first checks if there are 
