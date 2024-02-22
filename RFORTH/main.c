@@ -3,13 +3,7 @@
 #include "token.h"
 #include <string.h>
 #include "int_stack.h"
-   //testing it:      
-    // int value = 26;//value
-    //print b4
-    // int_stack_push(&theStack, value);//push it on stack
-    // int_stack_print(&theStack, stdout); 
-    //extern here; to print the stack from i_s.c:
-    // to std output
+
 int main(){
     
     int_stack_t theStack;//initialize stack
@@ -56,6 +50,10 @@ int main(){
             int_stack_over(&theStack);
             int_stack_print(&theStack, stdout);
         }
+        if(strncmp(s, "ROT", 3) == 0){
+            int_stack_rot(&theStack);
+            int_stack_print(&theStack, stdout);
+        }
         if(strncmp(s, "SWAP",4) ==0){
             int_stack_swap(&theStack);
             int_stack_print(&theStack, stdout);
@@ -77,6 +75,8 @@ int main(){
 
             }
         }
+
+
     } while(strncmp(s, "QUIT", 4) != 0);   
     return 0;
 }

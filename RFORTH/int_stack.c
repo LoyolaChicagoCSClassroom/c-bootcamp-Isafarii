@@ -80,6 +80,24 @@ int int_stack_add(int_stack_t *stk) {
     return int_stack_push(stk, top_value + next_to_top_value);
 }
 
+int int_stack_rot(int_stack_t *stk){
+    //takes the third to last element, puts it at the front
+    if (stk->size <3){
+        printf("ROT: Not enough elemts.\n");
+        return 0; //fail
+    }
+    int_entry_t *thirdElem = SLIST_FIRST(&stk->head);
+    thirdElem = SLIST_NEXT(thirdElem, entries);
+    thirdElem = SLIST_NEXT(thirdElem, entries);
+
+    int third_value = thirdElem->value;
+    SLIST_REMOVE(&stk->head, thirdElem, int_entry, entries);
+    free(thirdElem);
+    stk->size--;
+
+    return int_stack_push(stk,third_value);
+
+}
 int int_stack_over(int_stack_t *stk){
     //check stack size:
     // """: The operation first checks if there are 
@@ -88,7 +106,7 @@ int int_stack_over(int_stack_t *stk){
     // there are fewer than two elements, the operation 
     // cannot proceed and should indicate an error or failure."""
     if (stk->size <2){
-        printf("OVER: Not enought elemts.\n");
+        printf("OVER: Not enough elemts.\n");
         return 0; //meaning error fail
     }
     int_entry_t *secondElem = SLIST_NEXT(SLIST_FIRST(&stk->head), entries);
