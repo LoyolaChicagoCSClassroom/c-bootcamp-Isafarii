@@ -42,4 +42,7 @@ int int_stack_mult(int_stack_t *stk);
 int int_stack_sub(int_stack_t *stk);
 //div
 int int_stack_div(int_stack_t *stk);
+//
+int int_stack_2drop(int_stack_t *stk);
+
 #endif // INT_STACK_H
