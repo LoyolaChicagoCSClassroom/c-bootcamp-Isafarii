@@ -50,6 +50,10 @@ int main(){
             int_stack_over(&theStack);
             int_stack_print(&theStack, stdout);
         }
+        if(strncmp(s, "2OVER",5) ==0){
+            int_stack_2over(&theStack);
+            int_stack_print(&theStack, stdout);
+        }
         if(strncmp(s, "ROT", 3) == 0){
             int_stack_rot(&theStack);
             int_stack_print(&theStack, stdout);

@@ -188,15 +188,29 @@ int int_stack_over(int_stack_t *stk){
 
     }
     return 0; //else fail
-
-    //access second to top eleemnt
-    //duplicate element
-    //push dup on stack
-    //update stack size 
-    //hint: use SLIT_NEXT macro to access second-2top elem 
-    //2 args: 1st elem of list, name of entries in 
-    //int_entry_t struct
 }
+int int_stack_2over(int_stack_t *stk) {
+    if (stk->size < 4) {
+        printf("2OVER: Not enough elements.\n");
+        return 0; // Error: not enough elements
+    }
+
+    int_entry_t *fourthElem = SLIST_FIRST(&stk->head);
+    int_entry_t *thirdElem = SLIST_NEXT(fourthElem, entries);
+    int_entry_t *secondElem = SLIST_NEXT(thirdElem, entries);
+    int_entry_t *firstElem = SLIST_NEXT(secondElem, entries);
+
+    int fourth_value = fourthElem->value;
+    int third_value = thirdElem->value;
+
+    // Push the third and fourth elements onto the stack
+    int_stack_push(stk, fourth_value);
+    return int_stack_push(stk, third_value);
+}
+
+
+
+
 
 
 

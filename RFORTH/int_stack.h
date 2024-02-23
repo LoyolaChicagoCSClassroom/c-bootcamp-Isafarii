@@ -46,4 +46,6 @@ int int_stack_div(int_stack_t *stk);
 int int_stack_2drop(int_stack_t *stk);
 //2dup
 int int_stack_2dup(int_stack_t *stk);
+//2over
+int int_stack_2over(int_stack_t *stk);
 #endif // INT_STACK_H
