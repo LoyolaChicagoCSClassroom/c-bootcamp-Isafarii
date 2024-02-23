@@ -121,6 +121,7 @@ int int_stack_2drop(int_stack_t *stk){
     int_stack_drop(stk);
     return int_stack_drop(stk);
 }
+
 int int_stack_dup(int_stack_t *stk) {
     if (stk->size < 1)
         return 0;
