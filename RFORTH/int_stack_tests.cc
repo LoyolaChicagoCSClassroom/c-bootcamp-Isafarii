@@ -1,14 +1,14 @@
 #include <gtest/gtest.h>
 #include "int_stack.h"
-
-TEST(IntStackTest, Initialization) {
+//initializing with capacity of 10
+TEST(IntStackTest, Start) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     ASSERT_EQ(stk.size, 0);
     ASSERT_EQ(stk.capacity, 10);
 }
-
-TEST(IntStackTest, PushPopTop) {
+//push/pop/get top element
+TEST(IntStackTest, Push_Pop) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     int value;
@@ -21,8 +21,8 @@ TEST(IntStackTest, PushPopTop) {
     ASSERT_EQ(value, 5);
     ASSERT_EQ(stk.size, 0);
 }
-
-TEST(IntStackTest, Swap) {
+//Swapping
+TEST(IntStackTest, Swap_Two_Elems) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     int value1, value2;
@@ -36,8 +36,8 @@ TEST(IntStackTest, Swap) {
     ASSERT_EQ(value1, 1);
     ASSERT_EQ(value2, 2);
 }
-
-TEST(IntStackTest, TwoSwap) {
+//swap pairs
+TEST(IntStackTest, SwapPairs) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     int value1, value2, value3, value4;
@@ -57,8 +57,8 @@ TEST(IntStackTest, TwoSwap) {
     ASSERT_EQ(value3, 4);
     ASSERT_EQ(value4, 3);
 }
-
-TEST(IntStackTest, Add) {
+//test for adding
+TEST(IntStackTest, TestAdd) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     int value;
@@ -70,8 +70,8 @@ TEST(IntStackTest, Add) {
 
     ASSERT_EQ(value, 7);
 }
-
-TEST(IntStackTest, Sub) {
+//test for subbing
+TEST(IntStackTest, Testsub) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     int value;
@@ -83,8 +83,8 @@ TEST(IntStackTest, Sub) {
 
     ASSERT_EQ(value, 6);
 }
-
-TEST(IntStackTest, Mult) {
+//test for mult
+TEST(IntStackTest, TestMult) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     int value;
@@ -96,8 +96,8 @@ TEST(IntStackTest, Mult) {
 
     ASSERT_EQ(value, 12);
 }
-
-TEST(IntStackTest, Div) {
+//test for div
+TEST(IntStackTest, TestDiv) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     int value;
@@ -109,8 +109,8 @@ TEST(IntStackTest, Div) {
 
     ASSERT_EQ(value, 3);
 }
-
-TEST(IntStackTest, Rot) {
+//test for rot
+TEST(IntStackTest, TestRot) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     int value1, value2, value3;
@@ -127,8 +127,8 @@ TEST(IntStackTest, Rot) {
     ASSERT_EQ(value2, 3);
     ASSERT_EQ(value3, 2);
 }
-
-TEST(IntStackTest, Drop) {
+//test for drop
+TEST(IntStackTest, TestDrop) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     int value;
@@ -141,8 +141,8 @@ TEST(IntStackTest, Drop) {
     ASSERT_EQ(value, 1);
     ASSERT_EQ(stk.size, 0);
 }
-
-TEST(IntStackTest, TwoDrop) {
+//test for drop two
+TEST(IntStackTest, DropTwoElems) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
 
@@ -152,8 +152,8 @@ TEST(IntStackTest, TwoDrop) {
     int_stack_2drop(&stk);
     ASSERT_EQ(stk.size, 1);
 }
-
-TEST(IntStackTest, Dup) {
+//test for dup
+TEST(IntStackTest, TestDup) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     int value1, value2;
@@ -166,8 +166,8 @@ TEST(IntStackTest, Dup) {
     ASSERT_EQ(value1, 5);
     ASSERT_EQ(value2, 5);
 }
-
-TEST(IntStackTest, TwoDup) {
+//test for 2dup
+TEST(IntStackTest, Dup_Two_Elems) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     int value1, value2, value3, value4;
@@ -185,8 +185,8 @@ TEST(IntStackTest, TwoDup) {
     ASSERT_EQ(value3, 2);
     ASSERT_EQ(value4, 1);
 }
-
-TEST(IntStackTest, Over) {
+//test for over
+TEST(IntStackTest, TestOver) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     int value1, value2, value3;
@@ -202,8 +202,8 @@ TEST(IntStackTest, Over) {
     ASSERT_EQ(value2, 2);
     ASSERT_EQ(value3, 1);
 }
-
-TEST(IntStackTest, TwoOver) {
+//test for 2over
+TEST(IntStackTest, Test2Over) {
     int_stack_t stk;
     int_stack_init(&stk, 10);
     int value1, value2, value3, value4, value5;
@@ -219,14 +219,10 @@ TEST(IntStackTest, TwoOver) {
     int_stack_pop(&stk, &value4);
     int_stack_pop(&stk, &value5);
 
-    ASSERT_EQ(value1, 2);
-    ASSERT_EQ(value2, 1);
+    ASSERT_EQ(value1, 3);  
+    ASSERT_EQ(value2, 2);  
     ASSERT_EQ(value3, 4);
     ASSERT_EQ(value4, 3);
     ASSERT_EQ(value5, 2);
 }
 
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}

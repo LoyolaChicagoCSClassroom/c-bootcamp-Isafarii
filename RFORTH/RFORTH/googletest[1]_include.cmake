@@ -1,0 +1,5 @@
+if(EXISTS "/workspaces/c-bootcamp-Isafarii/RFORTH/RFORTH/googletest[1]_tests.cmake")
+  include("/workspaces/c-bootcamp-Isafarii/RFORTH/RFORTH/googletest[1]_tests.cmake")
+else()
+  add_test(googletest_NOT_BUILT googletest_NOT_BUILT)
+endif()

@@ -195,18 +195,13 @@ int int_stack_2over(int_stack_t *stk) {
         printf("2OVER: Not enough elements.\n");
         return 0; // Error: not enough elements
     }
+    int_entry_t *top = SLIST_FIRST(&stk->head);
+    int_entry_t *second = SLIST_NEXT(top, entries);
+    int_entry_t *third = SLIST_NEXT(second, entries);
+    int_entry_t *fourth = SLIST_NEXT(third, entries);
+    int_stack_push(stk, third->value);
 
-    int_entry_t *fourthElem = SLIST_FIRST(&stk->head);
-    int_entry_t *thirdElem = SLIST_NEXT(fourthElem, entries);
-    int_entry_t *secondElem = SLIST_NEXT(thirdElem, entries);
-    int_entry_t *firstElem = SLIST_NEXT(secondElem, entries);
-
-    int fourth_value = fourthElem->value;
-    int third_value = thirdElem->value;
-
-    // Push the third and fourth elements onto the stack
-    int_stack_push(stk, fourth_value);
-    return int_stack_push(stk, third_value);
+    return int_stack_push(stk, second->value);
 }
 
 

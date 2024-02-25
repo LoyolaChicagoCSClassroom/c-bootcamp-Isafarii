@@ -21,3 +21,26 @@ GCC: gcc -o main  main.c int_stack.c token.c -I.
 CMAKE: 
 Check if build file. If not, mkdir build in RFORTH directory, cd build, cmake .., make.
 Run the program with ./main
+
+## Testing
+
+Run the tests:
+
+1. Change to the `build` directory with
+
+   `bash
+    cd build
+    `
+    
+
+2. Build the project if not already built with
+
+    `cmake ..`
+
+    `make`
+    
+
+3. Run the tests with googletest:
+
+    ``./bin/googletest``
+
