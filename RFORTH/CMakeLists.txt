@@ -11,9 +11,10 @@ add_executable(googletest
 )
 
 target_link_libraries(googletest
+    int_stack_lib  
     gtest_main
     gtest
-    int_stack_lib  # Link with the int_stack library
 )
+
 
 add_test(NAME int_stack_tests COMMAND googletest)

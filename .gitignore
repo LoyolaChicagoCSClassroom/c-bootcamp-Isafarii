@@ -16,7 +16,8 @@ build/
 
 # Prerequisites
 *.d
-
+#txt output root
+tl.sh
 #txt outputter:
 RFORTH/tl.sh
 #ignoring git mirror?
