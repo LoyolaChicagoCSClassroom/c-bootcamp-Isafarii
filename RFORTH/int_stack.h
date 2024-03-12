@@ -20,7 +20,16 @@ typedef struct int_stack {
     int size;
     int capacity;
 } int_stack_t;
+//review below
+typedef struct {
+    char* name;
+    int value;
+} Variable;
 
+#define MAX_VARIABLES 100
+extern void def_variable(char* name, int value);
+extern int def_variable_value(char* name);
+//review above
 extern void int_stack_init(int_stack_t *stk, int capacity);
 extern int int_stack_push(int_stack_t *stk, int value);
 extern int int_stack_pop(int_stack_t *stk, int *top_value);

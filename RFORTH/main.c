@@ -4,6 +4,9 @@
 #include <string.h>
 #include "int_stack.h"
 
+//review below
+#include <ctype.h>
+
 int main(){
     
     int_stack_t theStack;//initialize stack
@@ -16,6 +19,20 @@ int main(){
         printf("\nType QUIT to exit: \n");
         //printf(""); //in case wants to put 'enter content here: ' 
         fgets(s,1024,stdin); //gets the input
+
+        s[strcspn(s,"\n")]=0;
+
+        if(strncmp(s,"VAR",3)==0){
+            char variable_name[256];
+            int variable_value;
+            if (sscanf(s, "VAR %s %d", variable_name, &variable_value) == 2) {
+                printf("Values: \n Variable name = %s \n Variable value = %d\n", variable_name,variable_value);
+                def_variable(variable_name,variable_value);
+            } else{
+                printf("Invalid variable def\n");
+            }
+        }
+
         //for now: if PUSH's', push to stack
         if(strncmp(s,"PUSH",4)==0){
             //want to make length of strs like 
@@ -95,15 +112,14 @@ int main(){
             int_stack_print(&theStack, stdout);
         }
         int top_value;
-        if(strncmp(s, "POP",3) ==0){
-            if(int_stack_pop(&theStack, &top_value) == 1){
-                printf("%d\n",top_value);
-                int_stack_print(&theStack, stdout);
+            if(strncmp(s, "POP",3) ==0){
+                if(int_stack_pop(&theStack, &top_value) == 1){
+                    printf("%d\n",top_value);
+                    int_stack_print(&theStack, stdout);
 
-            }
-        }
-
-
+                }
+            } 
     } while(strncmp(s, "QUIT", 4) != 0);   
     return 0;
 }
+

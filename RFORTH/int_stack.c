@@ -1,9 +1,13 @@
 // int_stack.c
-
 #include "int_stack.h"
-
 #include <stdlib.h>
 #include <stdio.h>
+//review below
+#include <string.h>
+Variable variables[MAX_VARIABLES];
+int variable_count = 0;
+//review above
+
 
 void int_stack_init(int_stack_t *stk, int capacity) {
     SLIST_INIT(&stk->head);
@@ -204,10 +208,23 @@ int int_stack_2over(int_stack_t *stk) {
     return int_stack_push(stk, second->value);
 }
 
+//review below
+void def_variable(char* name, int value){
+    variables[variable_count].name = strdup(name);
+    variables[variable_count].value = value;
+    variable_count++;
+}
 
-
-
-
+int def_variable_value(char* name){
+    for (int i = 0; i < variable_count; i++){
+        if(strcmp(variables[i].name,name)==0){
+            return variables[i].value;
+        }
+    }
+    printf("No variable %s\n",name);
+    return 0;
+}
+//review above
 
 
 void int_stack_print(int_stack_t *stk, FILE *file) {
