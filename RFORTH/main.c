@@ -19,9 +19,9 @@ int main(){
         printf("\nType QUIT to exit: \n");
         //printf(""); //in case wants to put 'enter content here: ' 
         fgets(s,1024,stdin); //gets the input
-
         s[strcspn(s,"\n")]=0;
 
+        //Variable
         if(strncmp(s,"VAR",3)==0){
             char variable_name[256];
             int variable_value;
@@ -32,6 +32,19 @@ int main(){
                 printf("Invalid variable def\n");
             }
         }
+
+        //Condition
+        if(strncmp(s,"COND",4)==0){
+            char condition_name[256];
+            int condition_value;
+            if (sscanf(s, "COND %s %d", condition_name, &condition_value) == 2) {
+                printf("Conditions: \n condition name = %s \n condition value = %d\n", condition_name,condition_value);
+                def_condition(condition_name,condition_value);
+            } else{
+                printf("Invalid condition def\n");
+            }
+        }
+
 
         //for now: if PUSH's', push to stack
         if(strncmp(s,"PUSH",4)==0){

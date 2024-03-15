@@ -20,16 +20,29 @@ typedef struct int_stack {
     int size;
     int capacity;
 } int_stack_t;
-//review below
+
+
 typedef struct {
     char* name;
     int value;
-} Variable;
+} Variable; //making the variable 
 
+typedef struct {
+    char* name; //string-like name
+    int value; //like so? 1 or 0?  eg: condition hey = 1
+}condition;
+
+
+//for the limit for conditions
+#define MAX_CONDITIONS 100
+extern void def_condition(char* name, int value);
+extern int def_condition_value(char* name) ;
+
+//for the limit for variables
 #define MAX_VARIABLES 100
 extern void def_variable(char* name, int value);
 extern int def_variable_value(char* name);
-//review above
+
 extern void int_stack_init(int_stack_t *stk, int capacity);
 extern int int_stack_push(int_stack_t *stk, int value);
 extern int int_stack_pop(int_stack_t *stk, int *top_value);

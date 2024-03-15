@@ -4,6 +4,10 @@
 #include <stdio.h>
 //review below
 #include <string.h>
+
+condition conditions[MAX_CONDITIONS];
+int condition_count = 0;
+
 Variable variables[MAX_VARIABLES];
 int variable_count = 0;
 //review above
@@ -224,6 +228,26 @@ int def_variable_value(char* name){
     printf("No variable %s\n",name);
     return 0;
 }
+
+
+
+void def_condition(char* name, int value){
+    conditions[condition_count].name = strdup(name);
+    conditions[condition_count].value = value;
+    condition_count++;
+}
+
+int def_condition_value(char* name){
+    for (int i = 0; i < condition_count; i++){
+        if(strcmp(conditions[i].name,name)==0){
+            return conditions[i].value;
+        }
+    }
+    printf("No condition %s\n",name);
+    return 0;
+}
+
+
 //review above
 
 
