@@ -17,10 +17,20 @@ Press enter afterwards.
 
 ### Building the Project
 
-GCC: gcc -o main  main.c int_stack.c token.c -I.
+GCC: 
+```bash
+gcc -o main  main.c int_stack.c token.c -I.
+```
 CMAKE: 
-Check if build file. If not, mkdir build in RFORTH directory, cd build, cmake .., make.
-Run the program with ./main
+Check if build file. If not, perform the following
+```bash
+mkdir build
+cd build
+cmake ..
+make
+```
+Run the program with `./rforth`
+
 
 ## Testing
 
@@ -38,9 +48,11 @@ Run the tests:
     `cmake ..`
 
     `make`
-    
 
-3. Run the tests with googletest:
-
-    ``./bin/googletest``
-
+3. Run the tests with `googletest` in `...RFORTH/build`:
+   ```bash
+   ./googletest
+   ```
+   
+### Progress Updates
+- **Adding Variable and Condition Support **: Recently added variable support, and made progress 3/15 commit to implement the conditions. Test cases are still being worked on.
