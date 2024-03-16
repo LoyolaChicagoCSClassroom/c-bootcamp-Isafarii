@@ -229,8 +229,6 @@ int def_variable_value(char* name){
     return 0;
 }
 
-
-
 void def_condition(char* name, int value){
     if ( value != 0 && value != 1){
         printf("Not a boolean statement (0 or 1) \n");
@@ -250,6 +248,8 @@ int def_condition_value(char* name){
     printf("No condition %s\n",name);
     return 0;
 }
+
+//add support for function here
 
 
 //review above

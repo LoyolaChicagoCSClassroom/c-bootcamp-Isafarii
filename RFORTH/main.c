@@ -132,6 +132,9 @@ int main(){
             int_stack_drop(&theStack);
             int_stack_print(&theStack, stdout);
         }
+
+
+        
         int top_value;
             if(strncmp(s, "POP",3) ==0){
                 if(int_stack_pop(&theStack, &top_value) == 1){
