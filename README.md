@@ -55,4 +55,6 @@ Run the tests:
    ```
    
 ### Progress Updates
-- **Adding Variable and Condition Support **: Recently added variable support, and made progress 3/15 commit to implement the conditions. Test cases are still being worked on.
+- **Adding Variable and Condition Support**: Recently added variable support, and made progress 3/15 commit to implement the conditions.
+
+- 3/16: Added Test Cases, fixed bugs in main and other small adjustments
