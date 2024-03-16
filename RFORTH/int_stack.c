@@ -232,6 +232,10 @@ int def_variable_value(char* name){
 
 
 void def_condition(char* name, int value){
+    if ( value != 0 && value != 1){
+        printf("Not a boolean statement (0 or 1) \n");
+        return;
+    }
     conditions[condition_count].name = strdup(name);
     conditions[condition_count].value = value;
     condition_count++;

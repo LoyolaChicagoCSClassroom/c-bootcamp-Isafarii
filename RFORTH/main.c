@@ -71,10 +71,18 @@ int main(){
                         printfToken(token);
                     }
                     t=t+i+1;//move to start of next token
+                    while (*(t) == ' '){
+                        t++;
+                    }
                     i=-1; //reset iterator
                 }
                 i++;
-            } 
+            }
+            //Observe null terminator
+            if(t[0] != '\0'){
+                token_t* token = create_token(whatType(t),t);
+                printfToken(token);
+            }
         }
         if(strncmp(s, "OVER", 4) == 0){
             int_stack_over(&theStack);

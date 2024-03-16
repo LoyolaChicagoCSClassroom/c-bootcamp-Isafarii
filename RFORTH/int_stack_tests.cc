@@ -1,5 +1,9 @@
 #include <gtest/gtest.h>
 #include "int_stack.h"
+
+//Testing the condition part 
+//and the variable part 
+
 //initializing with capacity of 10
 TEST(IntStackTest, Start) {
     int_stack_t stk;
@@ -225,4 +229,40 @@ TEST(IntStackTest, Test2Over) {
     ASSERT_EQ(value4, 3);
     ASSERT_EQ(value5, 2);
 }
+
+//Test for var
+TEST(IntStackTest, DefAndGetVar) {
+    char name[] = "testing";
+    int value = 777;
+    def_variable(name, value); 
+    int result = def_variable_value(name); 
+    ASSERT_EQ(result, value);
+}
+
+//Test for conds
+TEST(IntStackTest, DefAndGetCond) {
+    char cond_name[] = "condition";
+    int cond_value = 1; // true
+    def_condition(cond_name, cond_value); 
+    int cond_result = def_condition_value(cond_name); 
+    ASSERT_EQ(cond_result, cond_value);
+}
+
+//Undefined vars.
+TEST(IntStackTest, GetNoVar) {
+    char undefinedVarName[] = "noVar";
+    int expectedVarVal = 0; //if undefined is '0'
+    int resultUndefinedVar = def_variable_value(undefinedVarName);
+    ASSERT_EQ(resultUndefinedVar, expectedVarVal);
+}
+
+//Undefined conds.
+TEST(IntStackTest, GetNoCond) {
+    char undefinedCondName[] = "noCond";
+    int expectedCondValue = 0; //if undefined conds are '0'
+    int resultUndefinedCond = def_condition_value(undefinedCondName);
+    ASSERT_EQ(resultUndefinedCond, expectedCondValue);
+}
+
+
 
