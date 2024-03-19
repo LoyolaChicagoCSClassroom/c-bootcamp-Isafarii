@@ -11,8 +11,9 @@ include_directories(${PROJECT_SOURCE_DIR})
 add_library(int_stack_lib
     int_stack.c
     int_stack.h
-    token.c   # Add this line
-    token.h   # Add this line if you have a token.h file
+    token.c   
+    token.h 
+    function.c  
 )
 
 # Add the main RFORTH executable

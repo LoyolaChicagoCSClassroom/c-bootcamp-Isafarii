@@ -4,8 +4,12 @@
 #include <string.h>
 #include "int_stack.h"
 
+
 //review below
 #include <ctype.h>
+
+#include "function.h"
+
 
 int main(){
     
@@ -21,6 +25,13 @@ int main(){
         fgets(s,1024,stdin); //gets the input
         s[strcspn(s,"\n")]=0;
 
+        //Function
+        function_t* function = find_function(s);
+        if(function != NULL){
+            run_function(function,&theStack);
+            int_stack_print(&theStack,stdout);
+            continue;//continue for other inputs by user
+        }
         //Variable
         if(strncmp(s,"VAR",3)==0){
             char variable_name[256];
