@@ -58,3 +58,5 @@ Run the tests:
 - **Adding Variable and Condition Support**: Recently added variable support, and made progress 3/15 commit to implement the conditions.
 
 - 3/16: Added Test Cases, fixed bugs in main and other small adjustments
+
+- 3/15-17~: Added support for funtions, still getting it to run in main. 
