@@ -9,7 +9,7 @@ extern "C" {
 
 #include <stdio.h>
 #include <sys/queue.h>
-
+#include "token.h"
 typedef struct int_entry {
     int value;
     SLIST_ENTRY(int_entry) entries;
@@ -43,6 +43,10 @@ extern int def_condition_value(char* name) ;
 #define MAX_VARIABLES 100
 extern void def_variable(char* name, int value);
 extern int def_variable_value(char* name);
+
+
+void run_commanad(token_t* tokens, int num_tokens, int_stack_t* stack);
+
 
 extern void int_stack_init(int_stack_t *stk, int capacity);
 extern int int_stack_push(int_stack_t *stk, int value);

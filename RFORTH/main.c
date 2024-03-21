@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "token.h"
 #include <string.h>
 #include "int_stack.h"
@@ -10,6 +11,8 @@
 
 #include "function.h"
 
+//assume having function that evaluates a condition
+bool conditional(token_t* condition);
 
 int main(){
     
@@ -43,6 +46,24 @@ int main(){
                 printf("Invalid variable def\n");
             }
         }
+        //Conditional
+        // if(strncmp(s,"IF",2)==0){
+        //     token_t conditions[MAX_TOKENS];
+        //     int conditions_count = 0; 
+        //     //continue
+        //     char* next_token = strtok(NULL," ");//get the next after "IF"
+        //     while(next_token != NULL && strncmp(next_token,"THEN", 4) != 0){
+        //         conditions[conditions_count] = create_token(whatType(next_token), next_token);
+        //         //get next token
+        //         next_token = strtok(NULL, " ");
+        //     }
+        //     if(next_token == NULL){
+        //         printf("Error: Missing THEN in conditional");
+        //     }
+        //     else{
+        //         execute_conditional_block(conditions, conditions_count,&theStack);
+        //     }
+        // }
 
         //Condition
         if(strncmp(s,"COND",4)==0){

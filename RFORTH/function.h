@@ -14,6 +14,7 @@ typedef struct{
     int command_count;
 } function_t;
 
+extern void run_conditional_block(token_t* tokens,int num_tokens, int_stack_t* stk);
 
 extern function_t function[MAX_FUNCTIONS];
 //make count variable

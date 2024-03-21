@@ -77,9 +77,24 @@ int run_function(function_t* function, int_stack_t* stk) {
         }
     }
     return 1;
+}
+
+void run_command(token_t* tokens, int num_token, int_stack_t* stack){
+    for(int i = 0; i < num_token; i++){
+        token_t token = tokens[1];
+        switch(token.type){
+            case NUMBER:
+                int_stack_push(stack,atoi(token.text));
+                break;
+            case OPERATOR:
+                break;
+            case WORD:
+                break;
+    }
 
 //add tests
 //need to add other types, like: OR NOT IF ELSE etc.
 //had a huge linker error problem with run_function because
 // of a misplaced paranthesis. hours to figure out..
+}
 }

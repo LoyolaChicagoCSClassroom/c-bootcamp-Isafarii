@@ -60,3 +60,4 @@ Run the tests:
 - 3/16: Added Test Cases, fixed bugs in main and other small adjustments
 
 - 3/15-17~: Added support for funtions, still getting it to run in main. 
+- 3/19-20: Adding support for if-else, still WIP.
