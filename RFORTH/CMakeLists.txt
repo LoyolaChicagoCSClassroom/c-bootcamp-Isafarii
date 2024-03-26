@@ -13,7 +13,6 @@ add_library(int_stack_lib
     int_stack.h
     token.c   
     token.h 
-    function.c  
 )
 
 # Add the main RFORTH executable

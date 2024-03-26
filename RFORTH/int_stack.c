@@ -249,7 +249,6 @@ int def_condition_value(char* name){
     return 0;
 }
 
-//add support for function here
 
 
 //review above
