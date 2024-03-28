@@ -23,6 +23,10 @@ target_link_libraries(rforth
     int_stack_lib
 )
 
+target_link_libraries(rforth
+    int_stack_lib
+)
+
 # GoogleTest integration for unit testing
 include(FetchContent)
 FetchContent_Declare(
@@ -40,6 +44,7 @@ target_link_libraries(googletest
     int_stack_lib
     gtest_main
 )
+
 
 include(GoogleTest)
 gtest_discover_tests(googletest)

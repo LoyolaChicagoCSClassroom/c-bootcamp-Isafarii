@@ -7,7 +7,9 @@ typedef enum{
     NUMBER=1,
     OPERATOR,//2
     SYMBOL,//3
-    WORD//4
+    WORD,//4
+    FUNCTION,
+    IF
 }token_type_t;
 
 token_type_t whatType(char* start);
@@ -17,6 +19,29 @@ typedef struct token_t{
     token_type_t type;
     char* text;
 }token_t;
+
+
+
+typedef struct Node {
+token_type_t type;
+char* name;
+struct Node *condition;
+struct Node *true_cond;
+struct Node *false_cond;
+struct Node **children;
+int count_children;
+token_t *body; // array of tokens 
+int body_length; 
+}Node;
+
+
+token_t* tokenize(const char* function_definition,int* num_tokens );
+void parse_definition(token_t *tokens,int num_tokens,Node *function_node);
+void free_node(Node *node);
+
+
+//make node
+Node *make_node(token_t token);
 
 //make token; makes a token. two params: type and input: 
 token_t* create_token(token_type_t t, const char* s);

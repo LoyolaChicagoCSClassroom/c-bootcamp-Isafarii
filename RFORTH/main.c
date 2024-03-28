@@ -9,6 +9,8 @@
 //review below
 #include <ctype.h>
 
+#define MAX_FUNCTIONS 100 // If we need this
+
 
 //assume having function that evaluates a condition
 bool conditional(token_t* condition);
@@ -18,14 +20,44 @@ int main(){
     int_stack_t theStack;//initialize stack
     const int capacity = 10;//init cap of 10 
     int_stack_init(&theStack, capacity);//make stack with cap of 10 for now
-
     char s[1024];
+
+    Node *functions[MAX_FUNCTIONS]; // Array for functs
+    int function_count = 0;
+
+
     //do to keep repeating until exit
     do{
         printf("\nType QUIT to exit: \n");
         //printf(""); //in case wants to put 'enter content here: ' 
         fgets(s,1024,stdin); //gets the input
         s[strcspn(s,"\n")]=0;
+
+
+        char *t=&s[0];
+        // ...
+        if (t[0]!='\0') {
+            token_t *token=create_token(whatType(t),t);
+            if (token->type==WORD) {
+                // Check if the word is a function name and execute it
+                execute_function(token->text,&theStack,functions,function_count);
+            } else {
+                // Handle other token types (e.g., numbers, operators)
+            }
+        }
+
+
+        // function 
+        if (strncmp(s, ":", 1) == 0) {
+            char *function_definition = strdup(s + 1); // skips ':'
+            int num_tokens; //  counting tokens
+            token_t *tokens = tokenize(function_definition, &num_tokens); 
+            Node *function_node = malloc(sizeof(Node));
+            parse_definition(tokens, num_tokens, function_node); // set up function node
+            functions[function_count++] = function_node;
+            free(function_definition); // clean up
+            free(tokens); 
+        }
 
         
         //Variable
@@ -168,7 +200,11 @@ int main(){
 
                 }
             } 
-    } while(strncmp(s, "QUIT", 4) != 0);   
+    } while(strncmp(s, "QUIT", 4) != 0);  
+    // Clean up functions
+    for (int i = 0; i < function_count; i++) {
+        free_node(functions[i]); // Implement free_node to free the memory used by the function node
+    } 
     return 0;
 }
 

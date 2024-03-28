@@ -32,7 +32,7 @@ typedef struct {
     int value; //like so? 1 or 0?  eg: condition hey = 1
 }condition;
 
-//function is in other file?
+
 
 //for the limit for conditions
 #define MAX_CONDITIONS 100
