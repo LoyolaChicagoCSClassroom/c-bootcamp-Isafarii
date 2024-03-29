@@ -1,5 +1,6 @@
 // int_stack.c
 #include "int_stack.h"
+#include "token.h"
 #include <stdlib.h>
 #include <stdio.h>
 //review below

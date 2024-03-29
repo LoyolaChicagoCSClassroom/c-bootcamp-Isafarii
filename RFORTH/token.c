@@ -1,10 +1,10 @@
 #include "token.h"
+#include "int_stack.h"
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "int_stack.h"
 // create for: numbers, arith ops( + - * / ); symbols: ( :  ; ); words 
 //get the string and identify what string 
 
@@ -76,57 +76,52 @@ Node *node = malloc(sizeof(Node));
 return node;
 }
 
-Node *parse_if(token_t *tokens,int *num_tokens)  {
-    Node *if_node=malloc(sizeof(Node));
-    if_node->type=IF;
-    if_node->condition=make_node(tokens[1]);
-    if_node->true_cond=make_node(tokens[3]);
-    if_node->false_cond=NULL;
-
-    *num_tokens=5; // Update the number of tokens consumed (e.g., "if", condition, "then", true branch, "then")
-    return if_node;
-}
-
-void parse_definition(token_t *tokens, int num_tokens, Node *function_node)  {
-    // set up function node
-    function_node->type=FUNCTION;
-    function_node->name=strdup(tokens[1].text);
-    function_node->body=malloc(sizeof(token_t)*(num_tokens-4)); // skip function name, ':', and ';'
-    function_node->body_length=num_tokens-4;
-    for (int i=2;i<num_tokens-2;i++) { // skip ':' and function name; also skip ';' and '\0'
-        function_node->body[i-2]=tokens[i];
-    }
-}
-//run the function
-void execute_function(const char* name, int_stack_t* stack, Node* functions[], int function_count) {
+bool is_function_name(const char* name, Node* functions[], int function_count) {
     for (int i = 0; i < function_count; i++) {
         if (strcmp(functions[i]->name, name) == 0) {
-            // function found, now run
+            return true;
+        }
+    }
+    return false;
+}
+
+
+void parse_definition(token_t* tokens, int num_tokens, Node* function_node) {
+    function_node->type = FUNCTION;
+    function_node->name = strdup(tokens[0].text); // Use the first token as the function name
+    int body_length = num_tokens - 3; // Exclude the function name, ':' symbol, and ';'
+    if (body_length > 0) {
+        function_node->body = malloc(sizeof(token_t) * body_length);
+        function_node->body_length = body_length;
+        for (int i = 1; i < num_tokens - 2; i++) { // Start from the second token and exclude the last ';'
+            function_node->body[i - 1] = tokens[i];
+        }
+    } else {
+        function_node->body = NULL;
+        function_node->body_length = 0;
+    }
+}
+
+
+
+
+
+//run the function
+void execute_function(const char* name, int_stack_t* stack, Node* functions[], int function_count) {
+    printf("Executing function: %s\n", name);
+    for (int i = 0; i < function_count; i++) {
+        if (strcmp(functions[i]->name, name) == 0) {
+            printf("Function found: %s\n", name);
             for (int j = 0; j < functions[i]->body_length; j++) {
                 token_t token = functions[i]->body[j];
-                switch (token.type) {
-                case NUMBER:
-                    int_stack_push(stack, atoi(token.text));
-                    break;
-                case OPERATOR:
-                    
-                    if (strcmp(token.text, "+") == 0) {
-                        int b, a;
-                        int_stack_pop(stack, &b);
-                        int_stack_pop(stack, &a);
-                        int_stack_push(stack, a+b);
-                    } else if (strcmp(token.text, "-") == 0) {
-                        int b, a;
-                        int_stack_pop(stack, &b);
-                        int_stack_pop(stack, &a);
-                        int_stack_push(stack, a-b);
-                    } // more cases/operators?
-                    break;
-                default:
-                    // other types if needed
-                    break;
+                printf("Executing token: %s\n", token.text);
+                if (strcmp(token.text, "PUSH") == 0 && j + 1 < functions[i]->body_length) {
+                    int value = atoi(functions[i]->body[++j].text);
+                    int_stack_push(stack, value);
                 }
+                // Add more operations here as needed
             }
+            int_stack_print(stack, stdout); // Print the stack after executing the function
             return;
         }
     }
@@ -135,17 +130,6 @@ void execute_function(const char* name, int_stack_t* stack, Node* functions[], i
 
 
 
-void free_node(Node *node) {
-    if (node == NULL) {
-        return;
-    }
-    for (int i = 0; i < node->count_children; i++) {
-        free_node(node->children[i]);
-    }
-    free(node->name);
-    free(node->children);
-    free(node);
-}
 
 
 
